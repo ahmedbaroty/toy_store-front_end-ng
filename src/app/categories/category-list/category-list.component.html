@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h3>
+        TOY STORE Category List
+        <span *ngIf="isLogin">
+          <button class="btn btn-primary btn-position" (click)="addCategory()">
+            Add New Category
+          </button>
+        </span>
+      </h3>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <div id="loader" *ngIf="loading"></div>
+      <div *ngIf="categories.length == 0 && !loading"><p>no such categories found</p></div>
+      <div *ngIf="categories.length > 0 && !loading">
+        <table class="table table-bordered table-responsive">
+          <tr>
+            <td>
+              <input type="text" class="search-box"
+                     placeholder="search" [(ngModel)]="filterText">
+            </td>
+          </tr>
+          <tr *ngFor="let category of categories | filterPipe: filterText : categories">
+            <td>
+              <button class="btn-link btn-style" (click)="onSelectCategory(category)">
+                {{category.name}}
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

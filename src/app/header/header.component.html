@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div class="navbar-brand">TOY STORE</div>
+        </div>
+        <ul class="nav navbar-nav">
+          <li routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}">
+            <a routerLink="/">
+              <span>Home <span class="glyphicon glyphicon-home"></span></span>
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/categories">Categories</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/products">Products</a>
+          </li>
+
+          <li routerLinkActive="active">
+            <a routerLink="/search">Search</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/contactUs">Contact Us</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li routerLinkActive="active" *ngIf="!login">
+            <a routerLink="/signup">
+              <span>SignUp <span class="glyphicon glyphicon-user"></span></span>
+            </a>
+          </li>
+          <li routerLinkActive="active" *ngIf="!login">
+            <a routerLink="/login">
+              <span>Login <span class="glyphicon glyphicon-log-in"></span></span>
+            </a>
+          </li>
+          <!-- when login -->
+          <!-- user data-->
+          <li routerLinkActive="active" *ngIf="login">
+            <a routerLink="/user">
+              <span>{{ user.username }} <span class="glyphicon glyphicon-user"></span></span>
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/basket">
+              <span>Basket <span class="glyphicon glyphicon-shopping-cart" style="color: #f3f3f3"></span></span></a>
+          </li>
+          <!--log out-->
+          <li routerLinkActive="active" *ngIf="login">
+            <a class="logout" (click)="logout()">
+              <span>Logout <span class="glyphicon glyphicon-log-out"></span></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>

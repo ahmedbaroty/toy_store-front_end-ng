@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h3>ADD Product TO {{ getName() }} Category
+        <span>
+          <button class="btn btn-primary btn-position" (click)="resetButton()">
+            Reset
+          </button>
+        </span>
+      </h3>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div class="form-group">
+          <label for="name">Product Name</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            ngModel
+            name="name"
+            required #name="ngModel">
+          <p *ngIf="!name.valid && name.touched"> Enter Product Name </p>
+        </div>
+        <div class="form-group">
+          <label for="name">Product Price</label>
+          <input
+            type="number"
+            id="price"
+            class="form-control"
+            ngModel
+            name="price"
+            required #price="ngModel">
+          <p *ngIf="!price.valid && price.touched"> Enter Product Price </p>
+        </div>
+        <div class="form-group">
+          <label for="description">Product Description</label>
+          <textarea
+            type="text"
+            id="description"
+            class="form-control"
+            ngModel
+            name="description"
+            required #description="ngModel"></textarea>
+          <p *ngIf="!description.valid && description.touched"> Enter Product Description </p>
+        </div>
+        <div class="form-group">
+          <label for="availableStock">Product Available Stock</label>
+          <input
+            type="number"
+            id="availableStock"
+            class="form-control"
+            ngModel
+            name="availableStock"
+            required #availableStock="ngModel">
+          <p *ngIf="!availableStock.valid && availableStock.touched"> Enter Product Available Stock </p>
+        </div>
+        <button
+          class="btn btn-primary"
+          type="submit" [disabled]="!f.valid">Save
+        </button>
+        <div id="loader" *ngIf="loading"></div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h3>Sign Up TO TOY STORE</h3>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            ngModel
+            name="username"
+            required #username="ngModel">
+          <p *ngIf="!username.valid && username.touched"> Enter Correct User Name </p>
+        </div>
+        <div class="form-group">
+          <label for="email">Mail</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            ngModel
+            name="email"
+            required email
+            #email="ngModel">
+          <p *ngIf="!email.valid && email.touched"> Enter Correct Email Please </p>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            ngModel
+            name="password"
+            required #password="ngModel">
+          <p *ngIf="!password.valid && password.touched"> Enter Password Please </p>
+        </div>
+        <!--<div class="form-group">-->
+          <!--<label>Birth Date</label>-->
+        <!--</div>-->
+        <div>
+          <label>Gender</label>
+        </div>
+        <div class="radio-inline" *ngFor="let g of genders">
+          <label for="answer">
+            <input
+              type="radio"
+              name="gender"
+              [value]="g"
+              ngModel
+              name="gender"
+              required> {{ g }}
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="secret">Secret Questions</label>
+          <select
+            id="secret"
+            class="form-control"
+            ngModel
+            name="question"
+            required
+            #question="ngModel">
+            <option
+              *ngFor="let q of questions" [value]="q">{{ q }}
+            </option>
+          </select>
+          <p *ngIf="!question.valid&&question.touched">Select Question Please</p>
+        </div>
+        <div class="form-group" *ngIf="question.valid">
+          <input
+            type="text"
+            id="answer"
+            class="form-control"
+            [placeholder]="'Enter Your ' + question.value"
+            ngModel
+            name="answer"
+            required
+            #answer="ngModel">
+          <p *ngIf="!answer.valid&&answer.touched">Enter Your Answer Please </p>
+        </div>
+        <button
+          class="btn btn-primary"
+          type="submit" [disabled]="!f.valid">Submit
+        </button>
+        <div id="loader" *ngIf="submit"></div>
+      </form>
+    </div>
+  </div>
+</div>

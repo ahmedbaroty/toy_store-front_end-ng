@@ -1,0 +1,24 @@
+input.ng-invalid.ng-touched{
+  border: 1px solid #ff6d43;
+}
+
+select.ng-invalid.ng-touched{
+  border: 1px solid #ff6d43;
+}
+
+input.ng-valid.ng-touched{
+  border: 1px solid #53ff67;
+}
+
+select.ng-valid.ng-touched{
+  border: 1px solid #53ff67;
+}
+
+p {
+  color: #ff6d43;
+}
+
+.btn-position{
+  position: absolute;
+  right: 10px;
+}

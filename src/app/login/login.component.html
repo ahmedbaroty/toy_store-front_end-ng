@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h3>LOGIN TO TOY STORE</h3>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div class="form-group">
+          <label for="email">Mail</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            ngModel
+            name="email"
+            required email
+            #email="ngModel">
+          <p *ngIf="!email.valid && email.touched"> Enter Correct Email Please </p>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            ngModel
+            name="password"
+            required #password="ngModel">
+          <p *ngIf="!password.valid && password.touched"> Enter Password Please </p>
+        </div>
+        <button
+          class="btn btn-primary"
+          type="submit" [disabled]="!f.valid">Login
+        </button>
+        <div id="loader" *ngIf="submit"></div>
+      </form>
+    </div>
+  </div>
+</div>

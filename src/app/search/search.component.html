@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h3> TOY STORE SEARCH ENGINE</h3>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <div id="loader" *ngIf="loading"></div>
+        <div class="form-group">
+          <label>Search By: {{searchBy}}</label>
+          <select id="search-by"
+                  class="form-control"
+                  [(ngModel)]="searchBy">
+            <option value="All"> All</option>
+            <option value="Category"> Category</option>
+            <option value="Product"> Product</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input
+            [placeholder]="'search for '+searchBy"
+            type="text"
+            id="search-for"
+            class="form-control"
+            [(ngModel)]="searchFor">
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="searchBy === 'All'">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 products-table">
+        <div *ngIf="allObjects.length == 0 && !loading"><p>no such products or categories found</p></div>
+        <div *ngIf="allObjects.length > 0 && !loading">
+          <table class="table table-bordered table-responsive">
+            <tr *ngFor="let obj of allObjects | filterPipe: searchFor : allObjects">
+              <td>
+                <button class="btn-link btn-style" (click)="onSelectObject(obj)">
+                  {{obj.name}}
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="searchBy === 'Category'">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2  products-table">
+        <div *ngIf="categories.length == 0 && !loading"><p>no such categories found</p></div>
+        <div *ngIf="categories.length > 0 && !loading">
+          <table class="table table-bordered table-responsive">
+            <tr *ngFor="let obj of categories | filterPipe: searchFor : categories">
+              <td>
+                <button class="btn-link btn-style" (click)="onSelectObject(obj)">
+                  {{obj.name}}
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="searchBy === 'Product'">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2  products-table">
+        <div *ngIf="products.length == 0 && !loading"><p>no such products found</p></div>
+        <div *ngIf="products.length > 0 && !loading">
+          <table class="table table-bordered table-responsive">
+            <tr *ngFor="let obj of products | filterPipe: searchFor : products">
+              <td>
+                <button class="btn-link btn-style" (click)="onSelectObject(obj)">
+                  {{obj.name}}
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

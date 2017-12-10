@@ -1,0 +1,11 @@
+.btn-style {
+  font-size: 20px;
+  width: 100%;
+  text-align: left;
+}
+
+.products-table {
+  height: 370px;
+  overflow: auto;
+  overflow-scrolling: auto;
+}

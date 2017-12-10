@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row">
+    <div id="loader" *ngIf="loading"></div>
+    <div class="col-md-2">
+      <h3>{{ category.name }} Category </h3>
+      <hr>
+      <button class="btn btn-link btn-width" (click)="onDetailsClick()">Details</button>
+      <br>
+      <button class="btn btn-link btn-width" (click)="onProductsClick()">Product List</button>
+      <hr>
+    </div>
+    <div class="col-md-10">
+      <app-category-detail [isLogin]="isLogin" [categoryId]="categoryId" [category]="category" *ngIf="onDetails"></app-category-detail>
+      <app-product-list [isLogin]="isLogin" [products]="products" [category]="category" *ngIf="onProducts"></app-product-list>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <h2>TOY STORE BASKET</h2>
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <h1><label>Total Price : <span>  {{totalPrice}} $ </span></label></h1>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <table class="table table-bordered table-responsive">
+      <thead>
+      <tr>
+        <td><h4>Products</h4></td>
+        <td><h4>Available</h4></td>
+        <td><h4>Count</h4></td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let order of orderList">
+        <td>
+          <div class="row">
+            <div class="col-md-10">
+              {{order.product.name}}
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-danger"
+                      (click)="deleteOrderItem(order.product.productId)">
+                <span class="glyphicon glyphicon-trash"></span>
+              </button>
+            </div>
+          </div>
+        </td>
+        <td style="width: 10%">
+          <h4>{{order.product.availableStock}}</h4>
+        </td>
+        <td style="width: 20%">
+          <div class="row">
+            <div class="col-md-4">
+              <h4>{{order.count}}</h4>
+            </div>
+            <div class="col-md-4">
+              <button class="btn-block"
+                      [disabled]="order.count===1"
+                      (click)="decreaseButtonPressed(order.product.productId , order.count)">
+                <span class="glyphicon-minus" style="font-size: 20px"></span>
+              </button>
+            </div>
+            <div class="col-md-4">
+              <button class="btn-block"
+                      [disabled]="order.product.availableStock===0"
+                      (click)="increaseButtonPressed(order.product.productId , order.count)">
+                <span class="glyphicon-plus" style="font-size: 20px"></span>
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <button class="btn btn-default"
+            [disabled]="orderList.length===0"
+            style="background-color:#398044;color:white;padding: 10px" (click)="submit()">
+      <span>Make Order <span class="glyphicon glyphicon-ok"> </span></span>
+    </button>
+  </div>
+</div>
