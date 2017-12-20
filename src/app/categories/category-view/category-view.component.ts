@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {CategoryService} from '../../service/category.service';
-import {ProductService} from '../../service/product.service';
-import {LoggingService} from "../../service/logging.service";
+// import {ProductService} from '../../service/product.service';
+import {LoggingService} from '../../service/logging.service';
 
 @Component({
   selector: 'app-category-view',
@@ -11,7 +11,7 @@ import {LoggingService} from "../../service/logging.service";
 })
 export class CategoryViewComponent implements OnInit {
   categoryId = -1;
-  category = {categoryId: -1, name: '', description: ''};
+  category;
   onDetails = true;
   onProducts = false;
   products = [];
@@ -22,7 +22,7 @@ export class CategoryViewComponent implements OnInit {
 
   constructor(private activatedRouter: ActivatedRoute,
               private categoryService: CategoryService,
-              private productService: ProductService,
+        //      private productService: ProductService,
               private loggingService: LoggingService) {
     this.isLogin = this.loggingService.isLogin;
     this.activatedRouter.params.subscribe(
@@ -30,20 +30,21 @@ export class CategoryViewComponent implements OnInit {
         this.categoryId = +params['id'];
         this.categoryService
           .getCategory(this.categoryId)
-          .then((response: { categoryId: number, name: string, description: string }) => {
+          .then((response) => {
             this.category = response;
+            this.products = this.category.productList;
             this.loading_category = true;
             this.loading = (this.loading_category && this.loading_products);
           }).catch((error) => {
           alert('Category Not Found Network Error' + error.message);
         });
-        this.productService.getProductsByCategoryId(this.categoryId)
-          .then(() => {
-            this.products = this.productService.products;
-            this.loading = (this.loading_category && this.loading_products);
-          }).catch((error) => {
-          alert('PRODUCTS LIST ERROR: \n' + error.message);
-        });
+        // this.productService.getProductsByCategoryId(this.categoryId)
+        //   .then(() => {
+        //     this.products = this.productService.products;
+        //     this.loading = (this.loading_category && this.loading_products);
+        //   }).catch((error) => {
+        //   alert('PRODUCTS LIST ERROR: \n' + error.message);
+        // });
       });
   }
 

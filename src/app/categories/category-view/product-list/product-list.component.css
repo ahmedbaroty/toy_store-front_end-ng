@@ -16,3 +16,10 @@
   position: absolute;
   right: 10px;
 }
+
+.td-custom-style {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid #a0a0a0;
+}

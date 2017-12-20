@@ -15,6 +15,7 @@ import {ContactUsComponent} from './contact-us/contact-us.component';
 import {ProductsComponent} from './products/products.component';
 import {AuthGuardService} from './service/auth.guard.service';
 import {BasketComponent} from './basket/basket.component';
+import {UserOrderComponent} from './user-order/user-order.component';
 
 const appRouting: Routes = [
   {path: 'productDetails/:id', component: ProductDetailComponent},
@@ -31,6 +32,7 @@ const appRouting: Routes = [
   {path: 'notFound', component: NotFoundPageComponent},
   {path: 'contactUs', component: ContactUsComponent},
   {path: 'basket', component: BasketComponent},
+  {path: 'orders', component: UserOrderComponent},
   {path: '**', redirectTo: 'notFound'}];
 
 @NgModule({

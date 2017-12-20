@@ -1,0 +1,39 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h3> TOY STORE {{ user.username }}'s Orders</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <table class="table table-bordered table-responsive">
+        <thead>
+          <tr>
+            <td>Date</td>
+            <td>Total Price</td>
+            <td>Details</td>
+          </tr>
+        </thead>
+        <tr *ngFor="let order of orderList">
+          <td>{{ order.date }}</td>
+          <td>{{ order.totalPrice }}$</td>
+          <td>
+            <table class="table table-bordered table-responsive">
+              <tr *ngFor="let product of order.productList">
+                <td>
+                  {{product.name}}
+                </td>
+                <td>
+                  {{product.price}}
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>

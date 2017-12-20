@@ -8,16 +8,7 @@ export class BasketService {
       count: number
     }];
 */
-  orderList = [
-    {
-      product: { productId: 123 , name: 'product1', description: 'description', availableStock: 5, price: 101 },
-      count: 1
-    } ,
-    {
-      product: { productId: 124 , name: 'product2', description: 'description', availableStock: 5, price: 11 },
-      count: 1
-    }
-  ];
+  orderList = [];
 
   constructor() {
   }
@@ -55,7 +46,14 @@ export class BasketService {
     });
   }
 
-  addProduct(product: { productId: number, name: string, description: string, availableStock: number, price: number }) {
+  addProduct(product: {
+    productId: number,
+    name: string,
+    description: string,
+    availableStock: number,
+    price: number,
+    categoryId: number
+  }) {
     return new Promise((resolve, reject) => {
       if (product.availableStock >= 1) {
         --product.availableStock;

@@ -20,13 +20,26 @@
           </li>
 
           <li routerLinkActive="active">
-            <a routerLink="/search">Search</a>
+            <a routerLink="/search">
+              <span>Search <span class="glyphicon glyphicon-search"></span></span>
+            </a>
           </li>
           <li routerLinkActive="active">
-            <a routerLink="/contactUs">Contact Us</a>
+            <a routerLink="/contactUs">
+              <span>Contact Us <span class="glyphicon glyphicon-phone-alt"></span></span>
+            </a>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <li routerLinkActive="active" *ngIf="login">
+            <a routerLink="/basket">
+              <span>Basket <span class="glyphicon glyphicon-shopping-cart"></span></span></a>
+          </li>
+          <li routerLinkActive="active" *ngIf="login">
+            <a routerLink="/orders">
+              <span>Orders <span class="glyphicon glyphicon-list"></span></span>
+            </a>
+          </li>
           <li routerLinkActive="active" *ngIf="!login">
             <a routerLink="/signup">
               <span>SignUp <span class="glyphicon glyphicon-user"></span></span>
@@ -43,10 +56,6 @@
             <a routerLink="/user">
               <span>{{ user.username }} <span class="glyphicon glyphicon-user"></span></span>
             </a>
-          </li>
-          <li routerLinkActive="active">
-            <a routerLink="/basket">
-              <span>Basket <span class="glyphicon glyphicon-shopping-cart" style="color: #f3f3f3"></span></span></a>
           </li>
           <!--log out-->
           <li routerLinkActive="active" *ngIf="login">

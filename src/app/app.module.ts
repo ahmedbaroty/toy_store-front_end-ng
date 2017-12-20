@@ -28,6 +28,8 @@ import {ProductsComponent} from './products/products.component';
 import {AuthGuardService} from './service/auth.guard.service';
 import { BasketComponent } from './basket/basket.component';
 import {BasketService} from './service/basket.service';
+import { UserOrderComponent } from './user-order/user-order.component';
+import {OrderService} from './service/order.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import {BasketService} from './service/basket.service';
     FilterPipe,
     CategoryViewComponent,
     ProductsComponent,
-    BasketComponent
+    BasketComponent,
+    UserOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,7 @@ import {BasketService} from './service/basket.service';
   providers: [AppComponent,
     LoggingService,
     CategoryService,
-    ProductService , AuthGuardService , BasketService],
+    ProductService , AuthGuardService , BasketService , OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

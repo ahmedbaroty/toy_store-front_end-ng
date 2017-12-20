@@ -3,7 +3,7 @@ import {Http} from '@angular/http';
 
 @Injectable()
 export class CategoryService {
-  categories: [{ categoryId: number, name: string, description: string }];
+  categories = [];
   category: { categoryId: number, name: string, description: string };
 
   constructor(private http: Http) {
