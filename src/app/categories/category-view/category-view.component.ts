@@ -11,7 +11,7 @@ import {LoggingService} from '../../service/logging.service';
 })
 export class CategoryViewComponent implements OnInit {
   categoryId = -1;
-  category;
+  category: any;
   onDetails = true;
   onProducts = false;
   products = [];

@@ -12,14 +12,7 @@ import {LoggingService} from '../../../service/logging.service';
 export class ProductDetailComponent implements OnInit {
   @ViewChild('f') productForm: NgForm;
   onUpdate = false;
-  product = {
-    productId: -1,
-    name: '',
-    price: -1,
-    description: '',
-    availableStock: -1,
-    categoryId: -1
-  };
+  product;
   loading = false;
   isLogin = false;
 
@@ -31,6 +24,7 @@ export class ProductDetailComponent implements OnInit {
     this.productService.getProduct(+this.activatedRoute.snapshot.params['id'])
       .then(() => {
         this.product = this.productService.product;
+        console.log(this.product);
       }).catch((error) => {
       alert('GET PRODUCT ERROR : \n' + error.message);
     });
@@ -45,14 +39,16 @@ export class ProductDetailComponent implements OnInit {
 
   onSubmit() {
     this.loading = true;
+
     const product = {
       productId: this.product.productId,
       name: this.productForm.value.name,
-      price: this.productForm.value.price,
       description: this.productForm.value.description,
       availableStock: this.productForm.value.availableStock,
+      price: this.productForm.value.price,
       categoryId: this.product.categoryId
     };
+
     this.productService.updateProduct(product)
       .then(() => {
         this.loading = false;

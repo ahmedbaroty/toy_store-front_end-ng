@@ -27,7 +27,7 @@
                 {{product.name}}
               </button>
             </td>
-            <td class="td-custom-style">
+            <td class="td-custom-style" *ngIf="isLogin">
               <button class="btn btn-primary" (click)="onBuyProduct(product)">
                 <span class="glyphicon glyphicon-shopping-cart"></span>
               </button>

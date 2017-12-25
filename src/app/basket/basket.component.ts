@@ -21,6 +21,9 @@ export class BasketComponent implements OnInit {
               private loggingService: LoggingService,
               private productService: ProductService,
               private router: Router) {
+    if (!this.loggingService.isLogin) {
+      this.router.navigate(['/']);
+    }
     this.updateView();
   }
 
@@ -75,6 +78,7 @@ export class BasketComponent implements OnInit {
         }).then(() => {
           let count = 0;
           for (const order of this.orderList) {
+            console.log(order);
             this.productService.updateProduct(order.product).catch(
               (error) => {
                 alert('ERROR IN UPDATE PRODUCTS AVAILABLE COST:\n'

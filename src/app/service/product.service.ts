@@ -3,9 +3,8 @@ import {Http} from '@angular/http';
 
 @Injectable()
 export class ProductService {
-  products: [{ productId: number, name: string, price: number, description: string, availableStock: number, categoryId: number }];
-  product: { productId: number, name: string, price: number, description: string, availableStock: number, categoryId: number };
-
+  products = [];
+  product;
   constructor(private http: Http) {
   }
 
