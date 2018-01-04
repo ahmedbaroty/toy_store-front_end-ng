@@ -17,10 +17,14 @@
           </tr>
         </thead>
         <tr *ngFor="let order of orderList">
-          <td>{{ order.date }}</td>
+          <td><span>{{ order.localDate }}<span><br>{{order.localTime}}</span></span></td>
           <td>{{ order.totalPrice }}$</td>
           <td>
             <table class="table table-bordered table-responsive">
+              <thead><tr>
+                <td>product name</td>
+                <td>price</td>
+              </tr></thead>
               <tr *ngFor="let product of order.productList">
                 <td>
                   {{product.name}}

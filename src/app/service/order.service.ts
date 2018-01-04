@@ -25,7 +25,6 @@ export class OrderService implements OnInit {
     }
     const body = {
       userId: userId,
-      date: (new Date()).toString(),
       productList: productList
     };
     console.log(productList);

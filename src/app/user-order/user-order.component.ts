@@ -24,7 +24,8 @@ export class UserOrderComponent implements OnInit {
       }
       const customOrder = {
         productList: order.productList,
-        date: order.date,
+        localDate: order.localDate,
+        localTime: order.localTime,
         totalPrice: totalPrice
       };
       this.orderList.push(customOrder);

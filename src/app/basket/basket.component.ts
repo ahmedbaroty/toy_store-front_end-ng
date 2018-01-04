@@ -15,6 +15,7 @@ export class BasketComponent implements OnInit {
 
   orderList;
   totalPrice = 0;
+  makeOrderClicked = false;
 
   constructor(private basketService: BasketService,
               private orderService: OrderService,
@@ -67,6 +68,7 @@ export class BasketComponent implements OnInit {
   }
 
   submit() {
+    this.makeOrderClicked = true;
     //  insert to db
     //  update the availableStock of each product
     this.orderService.addOrder(

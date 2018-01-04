@@ -11,7 +11,8 @@ export class CategoryService {
 
   addCategory(category: { name: string, description: string }) {
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost:8080/categories', category)
+
+      this.http.post(`http://localhost:8080/categories`, category)
         .toPromise().then((response) => {
         resolve(response);
       }).catch((error) => {
